@@ -72,11 +72,7 @@
             }
         });
 
-        $("#rightValues").change(function () {
-            var selectedItem = $("#rightValues option:selected");
-            $("#txtRight").val(selectedItem.text());
-
-        });
+      
 
         
      // $("#rightValues").html('<option disabled value='+'"NoItem"' +' >No item selected </option>');
@@ -88,6 +84,33 @@
       if ($('select#leftValues option').length == 0) {
           $("#leftValues").html('<option disabled value=' + '"NoItem"' + ' >No item available </option>');
       }
+ 
+      $("#SelectPlatform").change(function () {
+
+            var textValue = $("#SelectPlatform option:selected").text();
+
+            if (textValue == "Select Platform")
+            {
+                // some code
+            }
+            else if (textValue == "ALM")
+            {
+                $("#leftValues option[value='NoItem']").remove();
+                
+                    @foreach (var kv in Model)
+                    {
+                       @:$("#leftValues").append("<option value='@kv.Value'>" + "@kv.Value" + "</option>");
+                    }
+
+            }
+            else if (textValue == "Serena")
+            {
+                // some code
+            }
+
+
+        });
+ 
  
     });
 
